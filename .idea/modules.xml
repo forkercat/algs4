@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/algs4.iml" filepath="$PROJECT_DIR$/.idea/algs4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ch1-fundamentals/ch1-fundamentals.iml" filepath="$PROJECT_DIR$/ch1-fundamentals/ch1-fundamentals.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ch2-sorting/ch2-sorting.iml" filepath="$PROJECT_DIR$/ch2-sorting/ch2-sorting.iml" />
+    </modules>
+  </component>
+</project>
