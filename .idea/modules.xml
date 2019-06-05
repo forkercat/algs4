@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/algs4.iml" filepath="$PROJECT_DIR$/.idea/algs4.iml" />
       <module fileurl="file://$PROJECT_DIR$/ch1-fundamentals/ch1-fundamentals.iml" filepath="$PROJECT_DIR$/ch1-fundamentals/ch1-fundamentals.iml" />
       <module fileurl="file://$PROJECT_DIR$/ch2-sorting/ch2-sorting.iml" filepath="$PROJECT_DIR$/ch2-sorting/ch2-sorting.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ch4-graphs/ch4-graphs.iml" filepath="$PROJECT_DIR$/ch4-graphs/ch4-graphs.iml" />
     </modules>
   </component>
 </project>
