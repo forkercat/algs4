@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * @date 06/04/2019
  * @author Junhao Wang
@@ -5,7 +7,7 @@
 
 public class WeightedQuickUnionUF {
   private int[] id;
-  private int[] sz;
+  private int[] sz; // size of component for roots (size indexed)
   private int count;
 
   public WeightedQuickUnionUF(int n) {
@@ -18,6 +20,7 @@ public class WeightedQuickUnionUF {
     for (int i = 0; i < n; i += 1) {
       sz[i] = 1;
     }
+    Arrays.sort();
   }
 
   public int count() {
