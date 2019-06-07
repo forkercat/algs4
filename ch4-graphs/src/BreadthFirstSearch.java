@@ -1,3 +1,5 @@
+import edu.princeton.cs.algs4.Queue;
+
 import java.util.Stack;
 
 /**
@@ -5,37 +7,32 @@ import java.util.Stack;
  * @date 06/06/2019
  */
 
-public class DepthFirstSearch {
+public class BreadthFirstSearch {
   private boolean[] marked;
-  private int count;
-  // extended for paths
   private int[] edgeTo;
-  private final int s;  // source
+  private final int s;
 
-  public DepthFirstSearch(Graph G, int s) {
+  public BreadthFirstSearch(Graph G, int s) {
     marked = new boolean[G.V()];
     edgeTo = new int[G.V()];
     this.s = s;
-    dfs(G, s);
+    bfs(G, s);
   }
 
-  private void dfs(Graph G, int v) {
-    marked[v] = true;
-    count += 1; // visit
-    for (int w : G.adj(v)) {
-      if (marked[w] == false) {
-        edgeTo[w] = v;
-        dfs(G, w);
+  private void bfs(Graph G, int s) {
+    Queue<Integer> queue = new Queue<>();
+    marked[s] = true;
+    queue.enqueue(s);
+    while (queue.isEmpty() == false) {
+      int v = queue.dequeue();
+      for (int w : G.adj(v)) {
+        if (marked[w] == false) {
+          edgeTo[w] = v;
+          marked[w] = true;
+          queue.enqueue(w);
+        }
       }
     }
-  }
-
-  public boolean marked(int v) {
-    return marked[v];
-  }
-
-  public int count() {
-    return count;
   }
 
   public boolean hasPathTo(int v) {
