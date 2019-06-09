@@ -13,7 +13,7 @@ public class SymbolGraph {
 
   public SymbolGraph(String stream, String sp) {
     st = new ST<String, Integer>();
-    In in = new In(stream);
+    In in = new In(stream);   // First pass (can be omitted if we use Map)
     while (in.hasNextLine()) {
       String[] a = in.readLine().split(sp);
       for (int i = 0; i < a.length; i += 1) {
@@ -27,7 +27,7 @@ public class SymbolGraph {
       keys[st.get(name)] = name;
     }
     G = new Graph(st.size()); // builds the graph
-    in = new In(stream);
+    in = new In(stream);      // second pass
     while (in.hasNextLine()) {
       String[] a = in.readLine().split(sp);
       int v = st.get(a[0]);
