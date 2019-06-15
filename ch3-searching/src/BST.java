@@ -1,3 +1,5 @@
+import java.util.NoSuchElementException;
+
 /**
  * @author Junhao Wang
  * @date 06/13/2019
@@ -63,11 +65,55 @@ public class BST<Key extends Comparable<Key>, Value> {
     return x;
   }
 
+  public boolean isEmpty() {
+    return size(root) == 0;
+  }
+
+  public Key min() {
+    if (isEmpty()) throw new NoSuchElementException();
+    Node x = min(root);
+    return x.key;
+  }
+
+  private Node min(Node x) {
+    if (x.left == null) return x;
+    return min(x.left);
+  }
+
+  /**
+   * Nice method to ponder
+   */
+  public Key floor(Key key) {  // consider a right leaning tree 1 - 2 - 3, and key is 0, it should return null
+    Node x = floor(root, key);
+    if (x == null) throw new NoSuchElementException();
+    return x.key;
+  }
+
+  private Node floor(Node x, Key key) {
+    if (x == null) {
+      return null;
+    }
+    int cmp = key.compareTo(x.key);
+    if (cmp < 0) { // left => must
+      return floor(x.left, key);
+    } else if (cmp > 0) { // right => could be
+      Node ret = floor(x.right, key);
+      if (ret == null) return x; // does not exist
+      else return ret;
+    } else { // equal
+      return x;
+    }
+  }
+
+  // ceil is similar, just flip two sides.
+
+
+
 
   /**
    * Iterative version
    */
-  public Value get_iter(Key key) {
+  public Value getIter(Key key) {
     Node x = root;
     while (x != null) {
       int cmp = key.compareTo(x.key);
@@ -82,7 +128,7 @@ public class BST<Key extends Comparable<Key>, Value> {
     return null; // not found
   }
 
-  public void put_iter(Key key, Value val) {
+  public void putIter(Key key, Value val) {
     Node x = root;
     while (x != null) {
       int cmp = key.compareTo(x.key);
