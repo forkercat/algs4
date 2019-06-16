@@ -107,6 +107,41 @@ public class BST<Key extends Comparable<Key>, Value> {
 
   // ceil is similar, just flip two sides.
 
+  public Key select(int k) { // key 0 ~ size - 1
+    if (k < 0 || k >= size()) throw new IllegalArgumentException();
+    Node x = select(root, k);
+    return x.key;
+  }
+
+  // Visualization: https://bloggg-1254259681.cos.na-siliconvalley.myqcloud.com/1fts4.jpg
+  private Node select(Node x, int k) { // it can't be null
+    if (x == null) return null;
+    int t = size(x.left);
+    if (k < t) { // left
+      return select(x.left, k);
+    } else if (k > t) { // right
+      return select(x.right, k - t - 1);
+    } else {
+      return x;
+    }
+  }
+
+  // 666
+  public int rank(Key key) {
+    return rank(root, key);
+  }
+
+  private int rank(Node x, Key key) {
+    if (x == null) return -1; // does not exist
+    int cmp = key.compareTo(x.key);
+    if (cmp < 0) { // left
+      return rank(x.left, key);
+    } else if (cmp > 0) { // right
+      return size(x.left) + 1 + rank(x.right, key);
+    } else {
+      return size(x.left);
+    }
+  }
 
 
 
