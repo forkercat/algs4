@@ -93,9 +93,7 @@ public class BST<Key extends Comparable<Key>, Value> {
   }
 
   private Node floor(Node x, Key key) {
-    if (x == null) {
-      return null;
-    }
+    if (x == null) return null;
     int cmp = key.compareTo(x.key);
     if (cmp < 0) { // left => must
       return floor(x.left, key);
@@ -199,6 +197,8 @@ public class BST<Key extends Comparable<Key>, Value> {
         return;
       }
     }
+    // optional
+    if (x == null) throw new NoSuchElementException();
   }
 
 }
