@@ -13,7 +13,7 @@ public class UF {
   public UF(int n) {
     count = n;
     id = new int[n];
-    for (int i = 0; i < n; i += 1) {
+    for (int i = 0; i < n; ++i) {
       id[i] = i;
     }
   }
@@ -40,7 +40,7 @@ public class UF {
 
     if (pID == qID) return;
 
-    for (int i = 0; i < id.length; i += 1) {
+    for (int i = 0; i < id.length; ++i) {
       if (id[i] == pID) id[i] = qID;
     }
     count -= 1;

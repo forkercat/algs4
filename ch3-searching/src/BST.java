@@ -21,6 +21,7 @@ public class BST<Key extends Comparable<Key>, Value> {
     }
   }
 
+  /** size */
   public int size() {
     return size(root);
   }
@@ -30,6 +31,7 @@ public class BST<Key extends Comparable<Key>, Value> {
     return x.n;
   }
 
+  /** get */
   public Value get(Key key) {
     return get(root, key);
   }
@@ -46,6 +48,7 @@ public class BST<Key extends Comparable<Key>, Value> {
     }
   }
 
+  /** put */
   public void put(Key key, Value val) {
     root = put(root, key, val);
   }
@@ -65,10 +68,12 @@ public class BST<Key extends Comparable<Key>, Value> {
     return x;
   }
 
+  /** isEmpty */
   public boolean isEmpty() {
     return size(root) == 0;
   }
 
+  /** min */
   public Key min() {
     if (isEmpty()) throw new NoSuchElementException();
     Node x = min(root);
@@ -80,9 +85,7 @@ public class BST<Key extends Comparable<Key>, Value> {
     return min(x.left);
   }
 
-  /**
-   * Nice method to ponder
-   */
+  /** floor */
   public Key floor(Key key) {  // consider a right leaning tree 1 - 2 - 3, and key is 0, it should return null
     Node x = floor(root, key);
     if (x == null) throw new NoSuchElementException();
@@ -107,6 +110,7 @@ public class BST<Key extends Comparable<Key>, Value> {
 
   // ceil is similar, just flip two sides.
 
+  /** select */
   public Key select(int k) { // key 0 ~ size - 1
     if (k < 0 || k >= size()) throw new IllegalArgumentException();
     Node x = select(root, k);
@@ -126,7 +130,7 @@ public class BST<Key extends Comparable<Key>, Value> {
     }
   }
 
-  // 666
+  /** rank */
   public int rank(Key key) {
     return rank(root, key);
   }
@@ -142,6 +146,23 @@ public class BST<Key extends Comparable<Key>, Value> {
       return size(x.left);
     }
   }
+
+
+  /** deleteMin */
+  public void deleteMin() {
+    if (isEmpty()) throw new NoSuchElementException();
+    root = deleteMin(root);
+  }
+
+  private Node deleteMin(Node x) {
+    if (x.left == null) {
+      return x.right;
+    }
+    x.left = deleteMin(x.left);
+    x.n = size(x.left) + size(x.right) + 1;
+    return x;
+  }
+
 
 
 

@@ -11,11 +11,11 @@ public class WeightedQuickUnionUF {
   public WeightedQuickUnionUF(int n) {
     count = n;
     id = new int[n];
-    for (int i = 0; i < n; i += 1) {
+    for (int i = 0; i < n; ++i) {
       id[i] = i;
     }
     sz = new int[n];
-    for (int i = 0; i < n; i += 1) {
+    for (int i = 0; i < n; ++i) {
       sz[i] = 1;
     }
   }

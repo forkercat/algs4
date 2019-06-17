@@ -9,7 +9,7 @@ public class UndirectedCycle {
 
   public UndirectedCycle(Graph G) {
     marked = new boolean[G.V()];
-    for (int s = 0; s < G.V(); s += 1) {
+    for (int s = 0; s < G.V(); ++s) {
       if (marked[s] == false) {
         dfs(G, -1, s);
       }

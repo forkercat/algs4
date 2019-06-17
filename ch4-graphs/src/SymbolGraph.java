@@ -16,7 +16,7 @@ public class SymbolGraph {
     In in = new In(stream);   // First pass (can be omitted if we use Map)
     while (in.hasNextLine()) {
       String[] a = in.readLine().split(sp);
-      for (int i = 0; i < a.length; i += 1) {
+      for (int i = 0; i < a.length; ++i) {
         if (st.contains(a[i]) == false) {
           st.put(a[i], st.size());
         }
@@ -31,7 +31,7 @@ public class SymbolGraph {
     while (in.hasNextLine()) {
       String[] a = in.readLine().split(sp);
       int v = st.get(a[0]);
-      for (int i = 1; i < a.length; i += 1) {
+      for (int i = 1; i < a.length; ++i) {
         G.addEdge(v, st.get(a[i]));
       }
     }

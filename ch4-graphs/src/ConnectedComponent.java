@@ -11,7 +11,7 @@ public class ConnectedComponent {
   public ConnectedComponent(Graph G) {
     marked = new boolean[G.V()];
     id = new int[G.V()];
-    for (int s = 0; s < G.V(); s += 1) {
+    for (int s = 0; s < G.V(); ++s) {
       if (marked[s] == false) {
         dfs(G, s);
         count += 1;

@@ -16,7 +16,7 @@ public class Graph {
   public Graph(int V) {
     this.V = V;
     adj = (LinkedList<Integer>[]) new LinkedList[V];
-    for (int v = 0; v < V; v += 1) {
+    for (int v = 0; v < V; ++v) {
       adj[v] = new LinkedList<Integer>();
     }
   }
@@ -24,7 +24,7 @@ public class Graph {
   public Graph(In in) {
     this(in.readInt()); // read V
     int E = in.readInt(); // read E
-    for (int i = 0; i < E; i += 1) {
+    for (int i = 0; i < E; ++i) {
       int v = in.readInt();
       int w = in.readInt();
       addEdge(v, w);
