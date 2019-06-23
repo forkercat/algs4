@@ -1,4 +1,6 @@
+import java.util.LinkedList;
 import java.util.NoSuchElementException;
+import java.util.Queue;
 
 /**
  * @author Junhao Wang
@@ -83,6 +85,18 @@ public class BST<Key extends Comparable<Key>, Value> {
   private Node min(Node x) {
     if (x.left == null) return x;
     return min(x.left);
+  }
+
+  /** max */
+  public Key max() {
+    if (isEmpty()) throw new NoSuchElementException();
+    Node x = max(root);
+    return x.key;
+  }
+
+  private Node max(Node x) {
+    if (x.right == null) return x;
+    return max(x.right);
   }
 
   /** floor */
@@ -226,6 +240,34 @@ public class BST<Key extends Comparable<Key>, Value> {
     }
     // optional
     if (x == null) throw new NoSuchElementException();
+  }
+
+  /**
+   * Range searching
+   */
+  public Iterable<Key> keys() {
+    return keys(min(), max());
+  }
+
+  public Iterable<Key> keys(Key lo, Key hi) {
+    Queue<Key> queue = new LinkedList<>();
+    keys(root, queue, lo, hi);
+    return queue;
+  }
+
+  private void keys(Node x, Queue<Key> queue, Key lo, Key hi) {
+    if (x == null) return;
+    int cmplo = lo.compareTo(x.key);
+    int cmphi = hi.compareTo(x.key);
+    if (cmplo < 0) {
+      keys(x.left, queue, lo, hi);
+    }
+    if (cmplo <= 0 && cmphi >= 0) {
+      queue.offer(x.key);
+    }
+    if (cmphi > 0) {
+      keys(x.right, queue, lo, hi);
+    }
   }
 
 }
