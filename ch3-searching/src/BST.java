@@ -137,7 +137,7 @@ public class BST<Key extends Comparable<Key>, Value> {
       return select(x.left, k);
     } else if (k > t) { // right
       return select(x.right, k - t - 1); // a new subtree
-    } else {
+    } else { // k == t
       return x;
     }
   }
